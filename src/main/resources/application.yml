@@ -3,6 +3,10 @@ spring:
     name: shorten-url
   profiles:
     active: dev
+  data:
+    redis:
+      host: localhost
+      port: 6379
   datasource:
     url: jdbc:mysql://localhost:3306/shorten?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: shorten
