@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ShortenURL</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; max-width: 640px; margin: 60px auto; padding: 0 20px; }
+        input { width: 100%; padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { margin-top: 12px; padding: 12px 24px; font-size: 16px; background: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #1d4ed8; }
+        #result { margin-top: 24px; padding: 16px; background: #f3f4f6; border-radius: 4px; word-break: break-all; display: none; }
+        #result a { color: #2563eb; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>ShortenURL</h1>
+    <p>把长 URL 变短。</p>
+    <input id="url" placeholder="https://example.com/long/path">
+    <button onclick="submit()">生成短链</button>
+    <div id="result"></div>
+
+    <script>
+        async function submit() {
+            const url = document.getElementById('url').value.trim();
+            if (!url) return;
+            const resp = await fetch('/api/shorten', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url })
+            });
+            const result = document.getElementById('result');
+            if (!resp.ok) {
+                result.innerHTML = '出错了:' + resp.status;
+                result.style.display = 'block';
+                return;
+            }
+            const data = await resp.json();
+            result.innerHTML = '<strong>短链:</strong> <a href="' + data.shortUrl + '" target="_blank">' + data.shortUrl + '</a>';
+            result.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
