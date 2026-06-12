@@ -1,5 +1,31 @@
 spring:
   application:
     name: shorten-url
+  datasource:
+    url: jdbc:mysql://localhost:3306/shorten?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: shorten
+    password: shorten
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
 server:
   port: 8080
+
+app:
+  public-base-url: http://localhost:8080
+  cache:
+    ttl-seconds: 86400
+    ttl-jitter-seconds: 600
+    null-ttl-seconds: 300
+  ratelimit:
+    capacity: 60
+    refill-tokens: 60
+    refill-seconds: 60
