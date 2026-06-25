@@ -65,7 +65,7 @@ docker compose up --build
 | `GET` | `/health` | 健康检查 |
 | `GET` | `/actuator/prometheus` | Prometheus 指标(供监控抓取) |
 
-## 关键技术亮点(简历 bullet 候选)
+## 关键技术亮点
 
 - **Base62 + MySQL 自增 ID** 做短码生成,保证唯一性且无需额外发号组件
 - **Cache-Aside + 空值缓存 + TTL 随机偏移** 三种缓存模式组合,实测命中率 > 99%
