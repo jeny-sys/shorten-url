@@ -99,18 +99,4 @@ mvn test
 - 跳转接口:见 `wrk-result-redirect.txt` 
 - 缓存命中率:见 Grafana 大盘(本期未集成)
 
-## 关键技术决策
-
-详见 `docs/superpowers/specs/2026-06-12-url-shortener-design.md` 第 7 节 ADR。
-
-## 未来扩展(Future Work)
-
-- K8s 部署 / Helm Chart
-- Snowflake 分布式 ID 替换自增 ID(支持多实例)
-- Bucket4j-Redis 后端实现分布式限流
-- 钉钉 / 企业微信告警推送
-- ELK 日志栈
-
----
-
 Built as a [Spring Boot 3.5.3](https://spring.io/projects/spring-boot) resume project.
