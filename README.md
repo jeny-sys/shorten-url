@@ -98,5 +98,3 @@ mvn test
 
 - 跳转接口:见 `wrk-result-redirect.txt` 
 - 缓存命中率:见 Grafana 大盘(本期未集成)
-
-Built as a [Spring Boot 3.5.3](https://spring.io/projects/spring-boot) resume project.
